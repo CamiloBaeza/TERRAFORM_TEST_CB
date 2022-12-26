@@ -25,3 +25,11 @@ resource "aws_s3_object" "folder2"{
   key = "Folder2/"
   source = "/dev/null"
 }
+
+resource "aws_s3_object" "s3_object_folder1_arch" {
+  for_each = fileset("./Folder1/","**")
+  bucket = "tarrocaido"
+  key = "Folder1/${each.value}"
+  source = "./Folder1/${each.value}"
+  etag = filemd5("./Folder1/${each.value}")
+}
