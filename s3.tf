@@ -16,7 +16,7 @@ resource "aws_s3_object" "s3_object_procesados_SQ" {
 
 resource "aws_s3_object" "folder1"{
   bucket = "tarrocaido"
-  key = "Folder1"
+  key = "Folder1/"
   source = "/dev/null"
 }
 
