@@ -55,3 +55,17 @@ resource "aws_s3_object" "s3_object_folder4_upload" {
   source = "./Folder4/${each.value}"
   etag = filemd5("./Folder4/${each.value}")
 }
+
+resource "aws_s3_object" "folder5"{
+  bucket = "tarrocaido"
+  key = "Folder5/"
+  source = "/dev/null"
+}
+
+resource "aws_s3_object" "s3_object_folder5_upload" {
+  for_each = fileset("./Folder5/","**")
+  bucket = "tarrocaido"
+  key = "Folder5/${each.value}"
+  source = "./Folder5/${each.value}"
+  etag = filemd5("./Folder5/${each.value}")
+}
