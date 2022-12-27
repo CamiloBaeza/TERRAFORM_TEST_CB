@@ -33,3 +33,9 @@ resource "aws_s3_object" "folder3"{
   key = "Folder3/"
   source = "/dev/null"
 }
+
+resource "aws_s3_object" "folder4"{
+  bucket = "tarrocaido"
+  key = "Folder4/"
+  source = "/dev/null"
+}
