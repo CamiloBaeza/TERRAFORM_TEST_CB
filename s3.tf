@@ -14,12 +14,6 @@ resource "aws_s3_object" "s3_object_procesados_SQ" {
   etag = filemd5("./Studio-qa/${each.value}")
 }
 
-resource "aws_s3_object" "folder1"{
-  bucket = "tarrocaido"
-  key = "Folder1/"
-  source = "/dev/null"
-}
-
 resource "aws_s3_object" "folder2"{
   bucket = "tarrocaido"
   key = "Folder2/"
