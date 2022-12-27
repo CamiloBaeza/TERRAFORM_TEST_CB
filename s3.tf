@@ -17,7 +17,7 @@ resource "aws_s3_object" "s3_object_procesados_SQ" {
 resource "aws_s3_object" "folder1"{
   bucket = "tarrocaido"
   key = "Folder1/"
-  source = "./Folder1/${each.value}"
+  source = "./Folder1"
 }
 
 resource "aws_s3_object" "folder2"{
