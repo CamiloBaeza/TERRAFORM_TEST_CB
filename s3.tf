@@ -1,3 +1,6 @@
+resource "aws_s3_bucket" "tarrocaido2" {
+  bucket = "tarrocaido2"
+}
 resource "aws_s3_object" "s3_object_procesados_SD" {
   for_each = fileset("./Studio-develop/","**")
   bucket = "tarrocaido"
