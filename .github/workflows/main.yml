@@ -23,6 +23,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
           aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: arn:aws:iam::042670738437:role/Rol-prueba-github
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
