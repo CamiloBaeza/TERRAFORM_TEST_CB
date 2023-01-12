@@ -15,7 +15,7 @@ resource "aws_lambda_function" "lambdita" {
   timeout          = 900
   environment {
     variables = {
-      BUCKET_TARRO = "${aws_s3_bucket.tarrocaido2.id}"
+      BUCKET_TARRO = "tarrocaido2-85326974528sssd8"
     }
   }
 }
