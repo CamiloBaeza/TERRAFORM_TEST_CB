@@ -15,7 +15,7 @@ resource "aws_lambda_function" "lambdita" {
   timeout          = 900
   environment {
     variables = {
-      BUCKET_TARRO = "${aws_s3_object.s3_object_procesados_SD.id}"
+      BUCKET_TARRO = "${aws_s3_object.s3_object_procesados_SD[each.key]}"
     }
   }
 }
