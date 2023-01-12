@@ -76,6 +76,12 @@ resource "aws_s3_object" "folder6"{
   source = "/dev/null"
 }
 
+resource "aws_s3_object" "folder7"{
+  bucket = "tarrocaido"
+  key = "Folder7/"
+  source = "/dev/null"
+}
+
 resource "aws_s3_object" "s3_object_folder6_upload" {
   for_each = fileset("./Folder6/","**")
   bucket = "tarrocaido"
