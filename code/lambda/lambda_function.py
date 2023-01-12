@@ -8,7 +8,8 @@ logger.setLevel(os.getenv("LOG_LEVEL", logging.INFO))
 
 def lambda_handler(event, context):
     try:
-        return os.environ["BUCKET_TARRO"]
+        nombretarro = os.environ["BUCKET_TARRO"]
+        return nombretarro
     except ClientError as error:
         logger.info("Unexpected error: %s" %error)
         return
