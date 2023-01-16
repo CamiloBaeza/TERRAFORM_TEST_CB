@@ -1,7 +1,9 @@
 name: Terraform Workspaces the real chuperloco
 
 on:
-  workflow_dispatch
+  push:
+    branches: [ main ]
+ # workflow_dispatch
 
 permissions:
       id-token: write
@@ -21,7 +23,7 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
+          role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY_DEV }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Setup Terraform
@@ -30,7 +32,7 @@ jobs:
       - name: Terraform Workflow
       #  working-directory: aws_s3_bucket
         run: |
-          terraform init -backend-config="bucket=tarrocaido" -backend-config="key=state/terraform.tfstate"
+          terraform init -backend-config="bucket=${{ env.BUCKET_NAME }}" -backend-config="key=state/terraform.tfstate"
       - name: Select Workspace
         run: |
           terraform workspace list
@@ -42,7 +44,7 @@ jobs:
           terraform validate
       - name: Terraform Plan
         run:  terraform plan
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve
       - name: Validate Creation/Changes
         run: terraform state list     
