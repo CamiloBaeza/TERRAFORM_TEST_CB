@@ -18,13 +18,16 @@ jobs:
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
+
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         env:
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           aws-region: ${{ secrets.DEFAULT_REGION }}
+
       - name: echo feo  
+        uses: actions/checkout@v3
         run: |
           echo $AWS_GITHUB_OIDC_ROLE |
 
