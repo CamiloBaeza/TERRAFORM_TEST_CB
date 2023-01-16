@@ -1,4 +1,4 @@
-name: Terraform Workspaces
+name: Terraform Workspaces copy
 
 on:
   workflow_dispatch

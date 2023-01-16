@@ -1,4 +1,4 @@
-name: Terraform Workspaces
+name: Terraform Workspaces the real chuperloco
 
 on:
   workflow_dispatch
