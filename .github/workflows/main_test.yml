@@ -1,8 +1,8 @@
 name: Despliegue en testing
 
 on:
-  # push:
-  #   branches: [ testing ]
+   push:
+     branches: [ testing ]
 
   workflow_dispatch:
 
