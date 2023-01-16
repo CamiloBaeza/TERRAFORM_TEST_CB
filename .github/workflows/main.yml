@@ -31,6 +31,14 @@ jobs:
       #  working-directory: aws_s3_bucket
         run: |
           terraform init -backend-config="bucket=tarrocaido" -backend-config="key=state/terraform.tfstate"
-          terraform workspace new ${{ env.environment }}
-          terraform workspace select ${{ env.environment }} && terraform plan
-          terraform workspace select ${{ env.environment }} && terraform apply -auto-approve
+      - name: Select Workspace
+        run: |
+          terraform workspace list
+      #     terraform workspace select ${{ secrets.ENV }} || terraform workspace new ${{ secrets.ENV }}
+      # - name: Terraform Validate
+      #   run: |
+      #     terraform state pull
+      #     terraform fmt
+      #     terraform validate
+      # - name: Terraform Plan
+      #   run:  terraform plan
