@@ -24,6 +24,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           aws-region: ${{ secrets.DEFAULT_REGION }}
+      - name: echo feo  
         run: |
           echo $AWS_GITHUB_OIDC_ROLE |
 
