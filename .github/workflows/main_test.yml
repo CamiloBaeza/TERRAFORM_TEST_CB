@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       environment: test
-
     permissions:
           id-token: write
           contents: read
@@ -22,8 +21,8 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::042670738437:role/Rol-prueba-github
-          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
+          aws-region: ${{ secrets.DEFAULT_REGION }}
 
       # - name: Setup Terraform
       #   uses: hashicorp/setup-terraform@v1
