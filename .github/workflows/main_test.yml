@@ -25,25 +25,25 @@ jobs:
           role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
           aws-region: ${{ secrets.AWS_REGION_TEST }}
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v1
 
-      - name: Terraform Workflow
-      #  working-directory: aws_s3_bucket
-        run: |
-          terraform init -backend-config="bucket=${{ env.BUCKET_NAME }}" -backend-config="key=state/terraform.tfstate"
-      - name: Select Workspace
-        run: |
-          terraform workspace list
-          terraform workspace select test || terraform workspace new test
-      - name: Terraform Validate
-        run: |
-          terraform state pull
-          terraform fmt
-          terraform validate
-      - name: Terraform Plan
-        run:  terraform plan
-      # - name: Terraform Apply
-      #   run: terraform apply -auto-approve
-      - name: Validate Creation/Changes
-        run: terraform state list     
+      # - name: Terraform Workflow
+      # #  working-directory: aws_s3_bucket
+      #   run: |
+      #     terraform init -backend-config="bucket=${{ env.BUCKET_NAME }}" -backend-config="key=state/terraform.tfstate"
+      # - name: Select Workspace
+      #   run: |
+      #     terraform workspace list
+      #     terraform workspace select test || terraform workspace new test
+      # - name: Terraform Validate
+      #   run: |
+      #     terraform state pull
+      #     terraform fmt
+      #     terraform validate
+      # - name: Terraform Plan
+      #   run:  terraform plan
+      # # - name: Terraform Apply
+      # #   run: terraform apply -auto-approve
+      # - name: Validate Creation/Changes
+      #   run: terraform state list     
