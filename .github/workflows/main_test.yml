@@ -37,7 +37,7 @@ jobs:
       - name: Select Workspace
         run: |
           terraform workspace list
-          terraform workspace select dev || terraform workspace new dev
+          terraform workspace select test || terraform workspace new test
       - name: Terraform Validate
         run: |
           terraform state pull
