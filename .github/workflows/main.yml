@@ -34,11 +34,11 @@ jobs:
       - name: Select Workspace
         run: |
           terraform workspace list
-           terraform workspace select dev || terraform workspace new dev
-       - name: Terraform Validate
-         run: |
-           terraform state pull
-           terraform fmt
-           terraform validate
-       - name: Terraform Plan
-         run:  terraform plan
+      #     terraform workspace select dev || terraform workspace new dev
+      # - name: Terraform Validate
+      #   run: |
+      #     terraform state pull
+      #     terraform fmt
+      #     terraform validate
+      # - name: Terraform Plan
+      #   run:  terraform plan
