@@ -33,4 +33,4 @@ jobs:
           terraform init -backend-config="bucket=tarrocaido" -backend-config="key=state/terraform.tfstate"
           terraform workspace new ${{ env.environment }}
           terraform workspace select ${{ env.environment }} && terraform plan
-      #   terraform workspace select ${{ env.environment }} && terraform apply -auto-approve
+          terraform workspace select ${{ env.environment }} && terraform apply -auto-approve
