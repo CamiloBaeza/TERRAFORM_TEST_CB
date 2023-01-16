@@ -25,9 +25,9 @@ jobs:
         with:
           role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
           aws-region: ${{ secrets.AWS_REGION_TEST }}
-          role-duration-seconds: 1200
+          role-duration-seconds: 900
           role-session-name: MySessionName
-          
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
