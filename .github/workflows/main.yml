@@ -42,3 +42,7 @@ jobs:
           terraform validate
       - name: Terraform Plan
         run:  terraform plan
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+      - name: Validate Creation/Changes
+        run: terraform state list     
