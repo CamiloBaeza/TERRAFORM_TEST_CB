@@ -14,6 +14,6 @@ jobs:
   call-workflow:
     runs-on: ubuntu-latest
     steps:
-    uses: octo-org/example-repo/.github/workflows/called-workflow.yml@main
+    uses: CamiloBaeza/TEST_TERRAFORM_AWS_CBAEZA/.github/workflows/called-workflow.yml@main
     secrets:
-      access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      access-token: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
