@@ -17,7 +17,7 @@ jobs:
     env:
       environment: test
       #super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
-      super_secret2: us-east-1
+      #super_secret2: us-east-1
 
     steps:
       - name: Git clone the repository
@@ -30,7 +30,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
           role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
-          aws-region: ${{ env.super_secret2 }}
+          aws-region: us-east-1
           role-duration-seconds: 900
           role-session-name: MySessionName
 
