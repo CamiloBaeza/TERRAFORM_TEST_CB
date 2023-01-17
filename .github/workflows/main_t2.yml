@@ -10,7 +10,7 @@ jobs:
     environment: test
     steps:
       - name: deploy
-
+        run: echo 'boom'
 # jobs:
 #   my-jobname:
 #     runs-on: ubuntu-latest
