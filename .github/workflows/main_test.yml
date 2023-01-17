@@ -2,7 +2,7 @@ name: Despliegue en testing
 
 on:
    push:
-     branches: [ main ]
+     branches: [ testing ]
 
    workflow_dispatch:
 
