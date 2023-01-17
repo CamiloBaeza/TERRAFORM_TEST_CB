@@ -12,7 +12,7 @@ jobs:
   deploy:
     name: Deploy
     environment:
-      name: dev
+      name: test
     runs-on: ubuntu-latest
 
     permissions:  
@@ -37,7 +37,7 @@ jobs:
           terraform init
       - name: Select Workspace
         run: |
-          terraform workspace list -lock=false 
+          terraform workspace list -backend-config="bucket=${{env.BUCKET_NAME_TEST}}" -backend-config="key=state/terraform.tfstate" -backend-config="profile=cbtest" -backend-config="encrypt=true"
           terraform workspace select ${{ env.environment }} || terraform workspace new ${{ env.environment }}
       - name: Terraform Validate
         run: |
@@ -49,7 +49,4 @@ jobs:
       # - name: Terraform Apply
       #   run: terraform apply -auto-approve
       - name: Validate Creation/Changes
-        run: terraform state list     
-
-
-# -backend-config="bucket= tarrocaido" -backend-config="key=state/terraform.tfstate" 
+        run: terraform state list
