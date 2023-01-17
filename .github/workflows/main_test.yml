@@ -1,58 +1,54 @@
-# name: Despliegue en testing
+name: Despliegue en testing
 
-# on:
-#   #  push:
-#   #    branches: [ testing ]
+on:
+   push:
+     branches: [ testing ]
 
-#   # workflow_dispatch:
+  # workflow_dispatch:
 
-# permissions:
-#   id-token: write
-#   contents: read
+permissions:
+  id-token: write
+  contents: read
 
-# jobs:
-#   deploy:
-#     name: Deploy
-#     runs-on: ubuntu-latest
-#     env:
-#       environment: test
-#       #super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
-#       super_secret2: us-east-1
+jobs:
+  deploy:
+    name: Deploy
+    environment:
+      name: test
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Git clone the repository
-#         uses: actions/checkout@v3
+    permissions:  
+      id-token: write  
+      contents: read
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
 
-#       - name: configure aws credentials
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
-#           role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
-#           aws-region: ${{env.super_secret2}}
-#           role-duration-seconds: 900
-#           role-session-name: MySessionName
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
+          aws-region: ${{env.AWS_REGION_TEST}}
 
-#       - name: Setup Terraform
-#         uses: hashicorp/setup-terraform@v1
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
 
-#       - name: Terraform Workflow
-#       #  working-directory: aws_s3_bucket
-#         run: |
-#           terraform init -backend-config="bucket=tarrito-54879-owo-uwu-pfff" -backend-config="key=state/terraform.tfstate"
-#       - name: Select Workspace
-#         run: |
-#           terraform workspace list
-#           terraform workspace select test || terraform workspace new test
-#       - name: Terraform Validate
-#         run: |
-#           terraform state pull
-#           terraform fmt
-#           terraform validate
-#       - name: Terraform Plan
-#         run:  terraform plan
-#       # - name: Terraform Apply
-#       #   run: terraform apply -auto-approve
-#       - name: Validate Creation/Changes
-#         run: terraform state list     
+      - name: Terraform Workflow
+      #  working-directory: aws_s3_bucket
+        run: |
+          terraform init -backend-config="bucket= ${{ BUCKET_NAME_TEST }}" -backend-config="key=state/terraform.tfstate"
+      - name: Select Workspace
+        run: |
+          terraform workspace list
+          terraform workspace select test || terraform workspace new test
+      - name: Terraform Validate
+        run: |
+          terraform state pull
+          terraform fmt
+          terraform validate
+      - name: Terraform Plan
+        run:  terraform plan
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve
+      - name: Validate Creation/Changes
+        run: terraform state list     
