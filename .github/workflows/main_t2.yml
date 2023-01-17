@@ -8,7 +8,6 @@ jobs:
   my-jobname:
     runs-on: ubuntu-latest
     env:
-      environment: test
       super_secret: ${{ secrets.SuperSecret }}
     steps:
       - if: ${{ env.super_secret != '' }}
