@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       environment: test
+      super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
+      super_secret2: ${{ secrets.AWS_REGION_TEST }}
+
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
@@ -23,8 +26,8 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
-          aws-region: ${{ secrets.AWS_REGION_TEST }}
+          role-to-assume: ${{ env.super_secret1 }}
+          aws-region: ${{ env.super_secret2 }}
           role-duration-seconds: 900
           role-session-name: MySessionName
 
