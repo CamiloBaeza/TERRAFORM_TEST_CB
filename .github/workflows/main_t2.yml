@@ -4,16 +4,14 @@ on:
     push:
       branches: [ testing ]
 
-  # workflow_dispatch:
-
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
-  call-workflow:
+  my-jobname:
     runs-on: ubuntu-latest
+    env:
+      environment: test
+      super_secret: ${{ secrets.SuperSecret }}
     steps:
-    uses: CamiloBaeza/TEST_TERRAFORM_AWS_CBAEZA/.github/workflows/called-workflow.yml@main
-    secrets:
-      access-token: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
+      - if: ${{ env.super_secret != '' }}
+        run: echo 'This step will only run if the secret has a value set.'
+      - if: ${{ env.super_secret == '' }}
+        run: echo 'This step will only run if the secret does not have a value set.'
