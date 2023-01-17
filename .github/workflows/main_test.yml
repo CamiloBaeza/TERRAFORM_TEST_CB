@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       environment: test
-      super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
+      super_secret1: ${{ env.ARN_ROLE_NAME_DEPLOY }}
       super_secret2: us-east-1
 
     steps:
