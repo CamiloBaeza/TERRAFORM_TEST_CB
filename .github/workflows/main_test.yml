@@ -26,7 +26,7 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: $.NODE_ENV=${{ secrets.ARN_ROLE_NAME_DEPLOY }}
+          role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
           aws-region: ${{ env.super_secret2 }}
           role-duration-seconds: 900
           role-session-name: MySessionName
