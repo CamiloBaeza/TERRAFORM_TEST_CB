@@ -16,6 +16,10 @@ jobs:
              gh api \
              -H "Accept: application/vnd.github+json" \
              /repos/CamiloBaeza/TEST_TERRAFORM_AWS_CBAEZA/actions/secrets
+      - name: Get registration token
+              id: getRegToken
+              run: |
+                curl -X POST -H \"Accept: application/vnd.github.v3+json\"  -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/myprofile/myrepo/actions/runners/registration-token
 
 # jobs:
 #   my-jobname:
