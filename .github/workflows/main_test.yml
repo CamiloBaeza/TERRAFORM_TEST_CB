@@ -6,18 +6,17 @@ on:
 
    workflow_dispatch:
 
-permissions:
-      id-token: write
-      contents: read
-
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+          id-token: write
+          contents: read
     env:
       environment: test
       super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
-      super_secret2: ${{ secrets.AWS_REGION_TEST }}
+      super_secret2: us-east-1
 
     steps:
       - name: Git clone the repository
