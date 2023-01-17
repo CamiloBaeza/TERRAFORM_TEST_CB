@@ -7,9 +7,14 @@ on:
 jobs:
   my-jobname:
     runs-on: ubuntu-latest
-    env:
+    environment: test
       SUPERSECRET: ${{ secrets.SuperSecret }}
     steps:
+        run: |
+             gh api \
+             -H "Accept: application/vnd.github+json" \
+             /repos/OWNER/REPO/actions/secrets
+   
       - if: ${{ env.SUPERSECRET != '' }}
         run: echo 'This step will only run if the secret has a value set.'
       - if: ${{ env.SUPERSECRET == '' }}
