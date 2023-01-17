@@ -34,7 +34,7 @@ jobs:
       - name: Terraform Workflow
       #  working-directory: aws_s3_bucket
         run: |
-          terraform init -backend-config="bucket= tarrocaido" -backend-config="key=state/terraform.tfstate"
+          terraform init
       - name: Select Workspace
         run: |
           terraform workspace list
@@ -50,3 +50,6 @@ jobs:
       #   run: terraform apply -auto-approve
       - name: Validate Creation/Changes
         run: terraform state list     
+
+
+# -backend-config="bucket= tarrocaido" -backend-config="key=state/terraform.tfstate" 
