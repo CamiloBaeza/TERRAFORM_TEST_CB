@@ -36,7 +36,7 @@ jobs:
       - name: Terraform Workflow
       #  working-directory: aws_s3_bucket
         run: |
-          terraform init -backend-config="bucket= ${{ BUCKET_NAME_TEST }}" -backend-config="key=state/terraform.tfstate"
+          terraform init -backend-config="bucket= ${{ env.BUCKET_NAME_TEST }}" -backend-config="key=state/terraform.tfstate"
       - name: Select Workspace
         run: |
           terraform workspace list
