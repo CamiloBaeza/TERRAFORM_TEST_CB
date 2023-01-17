@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       environment: test
-      #super_secret1: ${{ env.ARN_ROLE_NAME_DEPLOY }}
+      #super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
       super_secret2: us-east-1
 
     steps:
@@ -26,6 +26,8 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
           aws-region: ${{ env.super_secret2 }}
           role-duration-seconds: 900
