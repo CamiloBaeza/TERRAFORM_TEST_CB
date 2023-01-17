@@ -15,7 +15,7 @@ jobs:
           contents: read
     env:
       environment: test
-      super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY_TEST }}
+      super_secret1: ${{ secrets.ARN_ROLE_NAME_DEPLOY }}
       super_secret2: us-east-1
 
     steps:
