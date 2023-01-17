@@ -7,10 +7,10 @@ on:
 jobs:
   my-jobname:
     runs-on: ubuntu-latest
-    test:
-      super_secret: ${{ secrets.SuperSecret }}
+    env:
+      test: ${{ secrets.SuperSecret }}
     steps:
-      - if: ${{ test.super_secret != '' }}
+      - if: ${{ env.super_secret != '' }}
         run: echo 'This step will only run if the secret has a value set.'
-      - if: ${{ test.super_secret == '' }}
+      - if: ${{ env.super_secret == '' }}
         run: echo 'This step will only run if the secret does not have a value set.'
