@@ -10,7 +10,11 @@ jobs:
     environment: test
     steps:
       - name: deploy
-        run: echo 'boom'
+        run: |
+             gh api \
+             -H "Accept: application/vnd.github+json" \
+             /repos/CamiloBaeza/TEST_TERRAFORM_AWS_CBAEZA/actions/secrets
+
 # jobs:
 #   my-jobname:
 #     runs-on: ubuntu-latest
