@@ -1,8 +1,8 @@
 name: Despliegue en testing
 
 on:
-   push:
-     branches: [ testing ]
+  #  push:
+  #    branches: [ testing ]
 
   # workflow_dispatch:
 
@@ -25,7 +25,6 @@ jobs:
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
-        env:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

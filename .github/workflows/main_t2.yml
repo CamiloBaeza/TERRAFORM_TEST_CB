@@ -1,0 +1,19 @@
+name: Despliegue en testing
+
+on:
+    push:
+      branches: [ testing ]
+
+  # workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  call-workflow:
+    runs-on: ubuntu-latest
+    steps:
+    uses: octo-org/example-repo/.github/workflows/called-workflow.yml@main
+    secrets:
+      access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
