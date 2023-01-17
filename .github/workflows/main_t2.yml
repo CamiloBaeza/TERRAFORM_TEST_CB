@@ -3,19 +3,26 @@ name: Despliegue en testing
 on:
     push:
       branches: [ testing ]
-#123
+
 jobs:
-  my-jobname:
+  deployment:
     runs-on: ubuntu-latest
     environment: test
-      SUPERSECRET: ${{ secrets.SuperSecret }}
     steps:
-        run: |
-             gh api \
-             -H "Accept: application/vnd.github+json" \
-             /repos/OWNER/REPO/actions/secrets
+      - name: deploy
+
+# jobs:
+#   my-jobname:
+#     runs-on: ubuntu-latest
+#     environment: test
+#       SUPERSECRET: ${{ secrets.SuperSecret }}
+#     steps:
+#         run: |
+#              gh api \
+#              -H "Accept: application/vnd.github+json" \
+#              /repos/OWNER/REPO/actions/secrets
    
-      - if: ${{ env.SUPERSECRET != '' }}
-        run: echo 'This step will only run if the secret has a value set.'
-      - if: ${{ env.SUPERSECRET == '' }}
-        run: echo 'This step will only run if the secret does not have a value set.'
+#       - if: ${{ env.SUPERSECRET != '' }}
+#         run: echo 'This step will only run if the secret has a value set.'
+#       - if: ${{ env.SUPERSECRET == '' }}
+#         run: echo 'This step will only run if the secret does not have a value set.'
