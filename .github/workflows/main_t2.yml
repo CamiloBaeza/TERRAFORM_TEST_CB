@@ -7,7 +7,9 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: test
+    env:
+      GH_TOKEN: ${{ github.token }}
+      environment: test
     steps:
       - name: deploy
         run: |
